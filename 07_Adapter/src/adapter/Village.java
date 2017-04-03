@@ -2,6 +2,7 @@ package adapter;
 
 import java.util.ArrayList;
 
+import singleton.function.Print;
 import strategy.function.GenerateRandomPosition;
 import strategy.unit.Unit;
 
@@ -85,22 +86,13 @@ public class Village {
 		}
 			
 	}
-//	public void enterVillage(Unit unitClass){
-////		unitClass.setLocationX(GenerateRandomPosition.generate(this.leftX, this.rightX));
-////		unitClass.setLocationY(GenerateRandomPosition.generate(this.leftY, this.rightY));
-//		unitClass.setLocation(GenerateRandomPosition.generate(this.leftX, this.rightX), GenerateRandomPosition.generate(this.leftY, this.rightY));
+//	public void enterVillageStone(StoneClass unit){
+//		unit.setLocationX(GenerateRandomPosition.generate(this.leftX, this.rightX));
+//		unit.setLocationY(GenerateRandomPosition.generate(this.leftY, this.rightY));
 //		
-//		unitList.add(unitClass);
-//		
-//		System.out.println(unitClass.getType()+"이 마을에 입주했습니다.");
+//		stoneList.add(unit);
+//		System.out.println("돌이 마을에 입주했습니다.");
 //	}
-	public void enterVillageStone(StoneClass unit){
-		unit.setLocationX(GenerateRandomPosition.generate(this.leftX, this.rightX));
-		unit.setLocationY(GenerateRandomPosition.generate(this.leftY, this.rightY));
-		
-		stoneList.add(unit);
-		System.out.println("돌이 마을에 입주했습니다.");
-	}
 
 	public ArrayList<Unit> getUnitList() {
 		return unitList;
@@ -136,6 +128,37 @@ public class Village {
 
 	public int getRightY() {
 		return rightY;
+	}
+
+	public void removeStone(Village village){
+		ArrayList<StoneClass> stoneList =  village.stoneList;
+		if(stoneList.size() < 1) System.out.println("마을에 돌이 존재하지 않습니다.");
+		else{
+			stoneList.remove(stoneList.size()-1);
+			
+			System.out.println("돌이 제거 되었습니다.");
+			
+		}
+		System.out.println(village.toString());
+		
+	}
+
+
+	@Override
+	public String toString() {
+		int length = unitList.size();
+		StringBuffer sb = new StringBuffer();
+		sb.append("-Village-\nunitList=");
+		for(int index=0; index<length; index++){
+			sb.append(unitList.get(index).getType()+" | ");
+		}
+		
+		sb.append("\nstoneList=");
+		sb.append("\nleftX = "+ leftX + ", leftY=" + leftY
+				+ ", rightX=" + rightX + ", rightY=" + rightY + "]");
+//		return "Village [unitList=" + unitList + ", stoneList=" + stoneList + ", leftX=" + leftX + ", leftY=" + leftY
+//				+ ", rightX=" + rightX + ", rightY=" + rightY + "]";
+		return sb.toString();
 	}
 	
 	

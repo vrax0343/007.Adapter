@@ -3,6 +3,7 @@ package strategy.unit;
 import java.util.ArrayList;
 
 import adapter.StoneInterface;
+import adapter.Village;
 import factory.af.TeamName;
 import observer.DisplayElement;
 import observer.Observer;
@@ -37,7 +38,8 @@ public class Unit implements Observer{
 	
 	//07. Adapter
 	public void specialAbility() {}
-	public void died(){ }
+	public void died(Village village){ }
+	public void removeStone() {}
 	
 	//06. State Pattern
 	State cantSelfHeal;

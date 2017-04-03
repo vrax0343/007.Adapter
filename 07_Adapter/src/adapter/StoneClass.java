@@ -51,7 +51,7 @@ public class StoneClass implements StoneInterface{
 	}
 
 	@Override
-	public void getLocation() {
+	public void printLocation() {
 		// TODO Auto-generated method stub
 		System.out.println("("+this.locationX+"," + this.locationY+")");
 	}
